@@ -122,13 +122,15 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
 (function main() {
   var BALL_RADIUS = 20;
-  var BALL_SPEED = 5; // Размеры игрового поля
-
+  var BALL_SPEED = 5; 
+  
+  // Размеры игрового поля
   var X_MIN_PLAY_AREA = window.innerWidth * 0.1;
   var X_MAX_PLAY_AREA = window.innerWidth * 0.9;
   var Y_MIN_PLAY_AREA = window.innerHeight * 0.1;
   var Y_MAX_PLAY_AREA = window.innerHeight * 0.9;
-  var TIMER = 20;
+  
+  var TIMER = 60;
   var timer = TIMER;
   var score = 0;
   var canvasElement = document.getElementById('canvas');
@@ -223,23 +225,23 @@ parcelRequire = (function (modules, cache, entry, globalName) {
     console.log("Vx = ".concat(Vx, ", Vy = ").concat(Vy, ", score = ").concat(score)); // Двигаем платформой
 
     if (ArrowLeftPressed && xPlatform > X_MIN_PLAY_AREA + HALF_PLATFORM) {
-      xPlatform -= 5;
+      xPlatform -= 15; // 5
     } else if (ArrowRightPressed && xPlatform < X_MAX_PLAY_AREA - HALF_PLATFORM) {
-      xPlatform += 5;
+      xPlatform += 15;
     } // Движение мяча с платформой
 
 
     if (y === yPlatform - BALL_RADIUS && SpacePressed === false) {
       x = xPlatform; // y = yPlatform - BALL_RADIUS;
-    } // Запускаем мяч по нажатию на пробел
-
-
+    } 
+    
+    // Запускаем мяч по нажатию на пробел
     if (SpacePressed) {
       x += Vx;
       y -= Vy;
-    } // Столкновение сo стенками
-
-
+    } 
+    
+    // Столкновение сo стенками
     if (x < X_MIN_PLAY_AREA + BALL_RADIUS || x > X_MAX_PLAY_AREA - BALL_RADIUS) {
       Vx = -Vx;
     }
@@ -248,11 +250,12 @@ parcelRequire = (function (modules, cache, entry, globalName) {
       Vy = -Vy;
     } else if (y > Y_MAX_PLAY_AREA - BALL_RADIUS) {
       Vy = -Vy;
-
+      
+      // Отскок от платформы
       if (x > xPlatform - HALF_PLATFORM && x < xPlatform + HALF_PLATFORM) {
         score += 1;
-        Vx = (Math.random() < 0.5 ? -1 : 1) * Vx;
-        Vy += 1;
+        Vx = (Math.random() < 0.5 ? -1 : 1) * Vx; // Рандомная смена направления движения мяча при отскоке от платформы
+        //Vy += 1; // Увеличение скорости мяча при отскоке от платформы
       } else {
         score -= 1;
         SpacePressed = false;
@@ -261,9 +264,9 @@ parcelRequire = (function (modules, cache, entry, globalName) {
         y = yPlatform - BALL_RADIUS;
       }
     }
-  }; // Финальный экран
+  }; 
 
-
+  // Финальный экран
   var endScreen = function endScreen() {
     canvasElement.width = window.innerWidth;
     canvasElement.height = window.innerHeight;
@@ -274,9 +277,9 @@ parcelRequire = (function (modules, cache, entry, globalName) {
     start.font = '32px serif';
     start.fillText('Нажмите F5, чтобы начать сначала', window.innerWidth / 2 - 220, window.innerHeight / 2 + 75);
     start.closePath();
-  }; // Game over
+  }; 
 
-
+  // Game over
   var gameOver = function gameOver() {
     canvasElement.width = window.innerWidth;
     canvasElement.height = window.innerHeight;
