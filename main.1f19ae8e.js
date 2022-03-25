@@ -194,8 +194,8 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   document.addEventListener('keyup', keyUpHandler, false);
 
   var drawScene = function drawScene() {
-    canvasElement.width = window.innerWidth;
-    canvasElement.height = window.innerHeight; // Отрисовка игрового поля
+    canvasElement.width = window.innerWidth - 5;
+    canvasElement.height = window.innerHeight - 5; // Отрисовка игрового поля
 
     playArea.beginPath();
     playArea.strokeStyle = 'black';
@@ -268,8 +268,8 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Финальный экран
   var endScreen = function endScreen() {
-    canvasElement.width = window.innerWidth;
-    canvasElement.height = window.innerHeight;
+    canvasElement.width = window.innerWidth - 5;
+    canvasElement.height = window.innerHeight - 5;
     end.beginPath();
     start.fillStyle = 'blue';
     start.font = '48px serif';
@@ -281,8 +281,8 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Game over
   var gameOver = function gameOver() {
-    canvasElement.width = window.innerWidth;
-    canvasElement.height = window.innerHeight;
+    canvasElement.width = window.innerWidth - 5;
+    canvasElement.height = window.innerHeight - 5;
     end.beginPath();
     start.fillStyle = 'red';
     start.font = '72px serif';
@@ -309,8 +309,8 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   var startScreen = function startScreen() {
     // Отрисовка кнопки Начать игру
-    canvasElement.width = window.innerWidth;
-    canvasElement.height = window.innerHeight;
+    canvasElement.width = window.innerWidth - 5;
+    canvasElement.height = window.innerHeight - 5;
     start.beginPath();
     start.fillStyle = 'blue';
     start.strokeStyle = 'blue';
